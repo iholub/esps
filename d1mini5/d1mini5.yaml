@@ -19,6 +19,10 @@ logger:
 
 # Enable Home Assistant API
 api:
+  services:
+    - service: d1mini5_mhz19_calibrate_zero
+      then:
+        - mhz19.calibrate_zero: d1mini5_mhz19_id
 
 ota:
 

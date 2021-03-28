@@ -19,6 +19,10 @@ logger:
 
 # Enable Home Assistant API
 api:
+  services:
+    - service: d1mini4_mhz19_calibrate_zero
+      then:
+        - mhz19.calibrate_zero: d1mini4_mhz19_id
 
 ota:
 
@@ -32,11 +36,11 @@ uart:
 
 sensor:
   - platform: mhz19
-    id: "my_mhz19_id"
+    id: "d1mini4_mhz19_id"
     co2:
-      name: "MH-Z19 CO2 Value"
+      name: "D1Mini4 MH-Z19 CO2 Value"
     temperature:
-      name: "MH-Z19 Temperature"
+      name: "D1Mini4 MH-Z19 Temperature"
     update_interval: 20s
     automatic_baseline_calibration: false
 #  - platform: dht
@@ -55,10 +59,10 @@ switch:
       number: 2
       inverted: yes
   - platform: template
-    name: "MH-Z19 ABC"
+    name: "D1Mini4 MH-Z19 ABC"
     optimistic: true
     on_turn_on:
-      mhz19.abc_enable: my_mhz19_id
+      mhz19.abc_enable: d1mini4_mhz19_id
     on_turn_off:
-      mhz19.abc_disable: my_mhz19_id
+      mhz19.abc_disable: d1mini4_mhz19_id
 
