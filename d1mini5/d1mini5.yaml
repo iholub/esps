@@ -42,15 +42,15 @@ sensor:
     temperature:
       name: "D1Mini5 MH-Z19 Temperature"
     update_interval: 20s
-    automatic_baseline_calibration: false
-#  - platform: dht
-#    pin: 14
-#    temperature:
-#      name: "D1Mini5 Temperature"
-#    humidity:
-#      name: "D1Mini5 Humidity"
-#    model: DHT22
-#    update_interval: 5s
+    automatic_baseline_calibration: true
+  - platform: dht
+    pin: 14
+    temperature:
+      name: "D1Mini5 Temperature"
+    humidity:
+      name: "D1Mini5 Humidity"
+    model: DHT22
+    update_interval: 5s
 
 switch:
   - platform: gpio
