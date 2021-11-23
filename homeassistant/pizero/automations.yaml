@@ -1,0 +1,71 @@
+- id: '1630057680341'
+  alias: Home Assistant check state
+  description: Home Assistant ping
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: /ping
+  condition: []
+  action:
+  - service: telegram_bot.send_message
+    data:
+      message: -> pong123
+  mode: single
+- id: '1630081065192'
+  alias: sensors
+  description: Send Sensors
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: /sensors
+  condition: []
+  action:
+  - service: notify.telegram_notifier
+    data:
+      message: "Sensors - \n5 Temp - {{ states.sensor.d1mini5_temperature.state}}\
+        \ \n5 Humidity - {{ states.sensor.d1mini5_humidity.state }}\n5 CO2 - {{ states.sensor.d1mini5_mh_z19_co2_value.state\
+        \ }}\n1 Temp - {{ states.sensor.d1mini1_temperature.state}} \n1 Humidity -\
+        \ {{ states.sensor.d1mini1_humidity.state }}"
+  mode: single
+- id: '1630081152208'
+  alias: send_sensors
+  description: ''
+  trigger:
+  - platform: time_pattern
+    minutes: /1
+  condition: []
+  action:
+  - service: notify.telegram_notifier
+    data:
+      message: "5 Temp - {{ states.sensor.d1mini5_temperature.state}} \n5 Humidity\
+        \ - {{ states.sensor.d1mini5_humidity.state }}\n5 CO2 - {{ states.sensor.d1mini5_mh_z19_co2_value.state\
+        \ }}\n1 Temp - {{ states.sensor.d1mini1_temperature.state}} \n1 Humidity -\
+        \ {{ states.sensor.d1mini1_humidity.state }}\nSpeed - {{ states.sensor.fast_com_download.state\
+        \ }} Mbit/s"
+  mode: single
+- id: '1630091870378'
+  alias: Notify about HA start
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - service: notify.telegram_notifier
+    data:
+      message: Home Assistant - start
+  mode: single
+- id: '1630091958285'
+  alias: Notify about HA shutdown
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: shutdown
+  condition: []
+  action:
+  - service: notify.telegram_notifier
+    data:
+      message: Home Assistant - shutdown
+  mode: single

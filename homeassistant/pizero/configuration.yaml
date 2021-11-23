@@ -1,0 +1,40 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_token
+    allowed_chat_ids:
+      - !secret telegram_chat_id
+
+notify:
+  - name: telegram_notifier
+    platform: telegram
+    chat_id: !secret telegram_chat_id
+
+sensor:
+  - platform: systemmonitor
+    resources:
+      - type: processor_use
+      - type: processor_temperature
+      - type: load_5m
+      - type: memory_use_percent
+      - type: disk_use_percent
+      - type: disk_use
+      - type: disk_free
+      - type: last_boot
+
+fastdotcom:
+  scan_interval:
+      minutes: 60
+
