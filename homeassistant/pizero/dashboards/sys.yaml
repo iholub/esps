@@ -1,0 +1,68 @@
+title: Dacha
+views:
+  - path: default_view
+    title: Home
+    badges:
+      - entity: binary_sensor.updater
+      - entity: person.admin
+      - entity: sensor.processor_use_percent
+      - entity: sensor.load_5m
+      - entity: sensor.memory_use_percent
+      - entity: sensor.disk_use_percent
+      - entity: sensor.disk_use
+      - entity: sensor.disk_free
+      - entity: sensor.last_boot
+      - entity: sensor.keenetic_gateway_b_sent
+      - entity: sensor.keenetic_gateway_packets_received
+      - entity: sensor.keenetic_gateway_packets_sent
+      - entity: sensor.keenetic_gateway_kib_s_received
+      - entity: sensor.keenetic_gateway_kib_s_sent
+      - entity: sensor.keenetic_gateway_packets_s_received
+      - entity: sensor.keenetic_gateway_packets_s_sent
+      - entity: sensor.keenetic_gateway_b_received
+      - entity: sun.sun
+    cards:
+      - type: gauge
+        min: 0
+        max: 100
+        entity: sensor.processor_use_percent
+      - type: gauge
+        entity: sensor.memory_use_percent
+        min: 0
+        max: 100
+      - type: gauge
+        min: 0
+        max: 100
+        entity: sensor.disk_use
+      - type: gauge
+        entity: sensor.disk_free
+        min: 0
+        max: 100
+      - type: history-graph
+        entities:
+          - entity: sensor.load_5m
+        hours_to_show: 24
+        refresh_interval: 0
+      - type: history-graph
+        entities:
+          - entity: sensor.processor_use_percent
+        hours_to_show: 24
+        refresh_interval: 0
+      - type: gauge
+        entity: sensor.fast_com_download
+        min: 0
+        max: 100
+      - type: history-graph
+        entities:
+          - entity: sensor.fast_com_download
+        hours_to_show: 24
+        refresh_interval: 0
+      - type: gauge
+        entity: sensor.processor_temperature
+        min: 0
+        max: 100
+      - type: history-graph
+        entities:
+          - entity: sensor.processor_temperature
+        hours_to_show: 24
+        refresh_interval: 0

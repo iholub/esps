@@ -1,0 +1,25 @@
+title: Home1
+views:
+  - path: default_view
+    title: Home
+    cards:
+      - type: history-graph
+        entities:
+          - entity: sensor.d1mini1_humidity
+        hours_to_show: 24
+        refresh_interval: 0
+      - type: history-graph
+        entities:
+          - entity: sensor.d1mini3_humidity
+        hours_to_show: 24
+        refresh_interval: 0
+      - type: history-graph
+        entities:
+          - entity: sensor.d1mini4_humidity
+        hours_to_show: 24
+        refresh_interval: 0
+      - type: history-graph
+        entities:
+          - entity: sensor.d1mini5_humidity
+        hours_to_show: 24
+        refresh_interval: 0

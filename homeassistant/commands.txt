@@ -5,3 +5,5 @@ scp pi@pizero.local:/home/homeassistant/.homeassistant/automations.yaml zzz/
 scp root@homeassistant.local:/config/secrets.yaml zzz2/
 scp root@homeassistant.local:/config/configuration.yaml zzz2/
 scp root@homeassistant.local:/config/automations.yaml zzz2/
+
+scp -r pi@pizero.local:/home/pi/packed/ zzz3/

@@ -1,0 +1,15 @@
+title: Home1
+views:
+  - path: default_view
+    title: Home
+    cards:
+      - type: history-graph
+        entities:
+          - entity: sensor.d1mini4_mh_z19_co2_value
+        hours_to_show: 24
+        refresh_interval: 0
+      - type: history-graph
+        entities:
+          - entity: sensor.d1mini5_mh_z19_co2_value
+        hours_to_show: 24
+        refresh_interval: 0
